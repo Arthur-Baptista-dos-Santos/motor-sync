@@ -1,0 +1,9 @@
+﻿[
+  {"equipment_id":"a1b2c3d4-0001-4e5f-8a9b-c0d1e2f30001","timestamp":"2026-06-28T06:00:00","raw_voltage":1950,"raw_current":1460,"raw_temperature":1200,"raw_vibration":820,"raw_rpm":3520,"id":"r001"},
+  {"equipment_id":"a1b2c3d4-0001-4e5f-8a9b-c0d1e2f30001","timestamp":"2026-06-28T08:00:00","raw_voltage":1955,"raw_current":1475,"raw_temperature":1250,"raw_vibration":835,"raw_rpm":3518,"id":"r002"},
+  {"equipment_id":"a1b2c3d4-0001-4e5f-8a9b-c0d1e2f30001","timestamp":"2026-06-28T10:00:00","raw_voltage":1948,"raw_current":1480,"raw_temperature":1310,"raw_vibration":850,"raw_rpm":3515,"id":"r003"},
+  {"equipment_id":"a1b2c3d4-0002-4e5f-8a9b-c0d1e2f30002","timestamp":"2026-06-28T07:00:00","raw_voltage":1130,"raw_current":470,"raw_temperature":980,"raw_vibration":610,"raw_rpm":3440,"id":"r004"},
+  {"equipment_id":"a1b2c3d4-0002-4e5f-8a9b-c0d1e2f30002","timestamp":"2026-06-28T09:00:00","raw_voltage":1128,"raw_current":475,"raw_temperature":990,"raw_vibration":615,"raw_rpm":3438,"id":"r005"},
+  {"equipment_id":"a1b2c3d4-0004-4e5f-8a9b-c0d1e2f30004","timestamp":"2026-06-28T07:30:00","raw_voltage":1130,"raw_current":810,"raw_temperature":1100,"raw_vibration":750,"raw_rpm":3440,"id":"r006"},
+  {"equipment_id":"a1b2c3d4-0004-4e5f-8a9b-c0d1e2f30004","timestamp":"2026-06-28T09:30:00","raw_voltage":1132,"raw_current":815,"raw_temperature":1120,"raw_vibration":760,"raw_rpm":3439,"id":"r007"}
+]
