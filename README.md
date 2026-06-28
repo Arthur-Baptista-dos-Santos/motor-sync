@@ -1,5 +1,7 @@
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-abs--motor--sync.streamlit.app-FF4B4B?logo=streamlit&logoColor=white)](https://abs-motor-sync.streamlit.app)
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-abs--motor--sync.streamlit.app-FF4B4B?logo=streamlit&logoColor=white)](https://abs-motor-sync.streamlit.app)
+
 # `MotorSync: Monitor de Ativos Industriais`
 
 > Dashboard Streamlit para cadastro tecnico, consulta e visualizacao de dados de motores e equipamentos industriais. Arquitetura desacoplada UI/backend/storage, dark theme industrial, conversao de leituras ADC para unidades fisicas. Sprint 1 do projeto Forzy, FIAP 2026.
