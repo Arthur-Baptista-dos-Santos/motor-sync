@@ -1,5 +1,5 @@
-"""
-Page 3 — Dados Brutos
+﻿"""
+Page 3 | Dados Brutos
 Sensor readings visualization with raw-to-engineering-unit conversion.
 """
 
@@ -18,7 +18,7 @@ from backend.services import EquipmentService, SensorService
 from backend.models import SensorReading
 
 st.set_page_config(
-    page_title="MotorSync — Dados Brutos",
+    page_title="MotorSync | Dados Brutos",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -47,7 +47,7 @@ if not equipments:
 
 # Pre-select if coming from equipment page
 pre_id = st.session_state.get("sensor_equipment_id", None)
-eq_map = {f"{e.tag} — {e.manufacturer} {e.model}": e for e in equipments}
+eq_map = {f"{e.tag} | {e.manufacturer} {e.model}": e for e in equipments}
 eq_labels = list(eq_map.keys())
 
 default_idx = 0
@@ -114,7 +114,7 @@ nominal = {"voltage_v": eq.voltage_v, "current_a": eq.current_a, "rpm": eq.rpm}
 converted = [convert_reading(r.to_dict(), nominal) for r in raw_readings]
 latest = converted[-1]  # Most recent
 
-# ── Latest reading — Live panel ───────────────────────────────────────────────
+# ── Latest reading | Live panel ───────────────────────────────────────────────
 section_header("Leitura Mais Recente", f"Última atualização: {latest.timestamp[:19].replace('T', ' ')}")
 
 # Status summary banner
@@ -122,17 +122,17 @@ overall_statuses = [latest.voltage_status, latest.current_status,
                     latest.temperature_status, latest.vibration_status, latest.rpm_status]
 if "critical" in overall_statuses:
     overall = "critical"
-    overall_msg = "🚨  ATENÇÃO CRÍTICA — Um ou mais parâmetros fora do limite seguro"
+    overall_msg = "🚨  ATENÇÃO CRÍTICA | Um ou mais parâmetros fora do limite seguro"
     banner_color = "#ef4444"
     banner_bg = "#2d0e0e"
 elif "warning" in overall_statuses:
     overall = "warning"
-    overall_msg = "⚠️  ATENÇÃO — Parâmetros próximos ao limite nominal"
+    overall_msg = "⚠️  ATENÇÃO | Parâmetros próximos ao limite nominal"
     banner_color = "#f59e0b"
     banner_bg = "#2d1f00"
 else:
     overall = "ok"
-    overall_msg = "✅  OPERAÇÃO NORMAL — Todos os parâmetros dentro dos limites"
+    overall_msg = "✅  OPERAÇÃO NORMAL | Todos os parâmetros dentro dos limites"
     banner_color = "#22c55e"
     banner_bg = "#052e16"
 
@@ -238,7 +238,7 @@ with tab3:
 
 with tab4:
     # Full table with raw + converted values
-    st.markdown("**Dados Convertidos — Unidades de Engenharia**")
+    st.markdown("**Dados Convertidos | Unidades de Engenharia**")
     st.dataframe(df.reset_index(), use_container_width=True, height=320,
                  column_config={
                      "Timestamp": st.column_config.DatetimeColumn("Data/Hora", format="DD/MM/YY HH:mm"),
@@ -282,7 +282,7 @@ with tab4:
 
         # Conversion table reference
         st.markdown("<div style='margin-top:12px;'></div>", unsafe_allow_html=True)
-        st.markdown("**Tabela de Conversão — Fórmulas Aplicadas**")
+        st.markdown("**Tabela de Conversão | Fórmulas Aplicadas**")
         st.markdown("""
         | Sensor | Tipo | Escala Raw | Fórmula | Unidade |
         |---|---|---|---|---|
@@ -291,15 +291,16 @@ with tab4:
         | Temperatura | NTC Thermistor | 0 – 4095 | `−20 + (raw / 4095) × 170` | °C |
         | Vibração | ADXL345 | 0 – 4095 | `raw / 4095 × 16` | g |
         | Velocidade | Hall Effect | pulsos/s | `pulsos/s × 60 / PPR` | RPM |
-        | Potência | Derivada | — | `V × A × FP × √3 / 1000` | kW |
+        | Potência | Derivada | | | `V × A × FP × √3 / 1000` | kW |
         """)
 
 # ── Footer note ───────────────────────────────────────────────────────────────
 st.markdown("""
 <div style="margin-top:24px; padding:12px 16px; background:#161b22; border-radius:6px;
             border:1px solid #21262d; font-size:11px; color:#484f58;">
-    💡 <strong style="color:#8b949e;">Sprint 1</strong> — Dados simulados para validação da interface.
+    💡 <strong style="color:#8b949e;">Sprint 1</strong> | Dados simulados para validação da interface.
     Na Sprint 2, este módulo receberá dados reais via MQTT/API e aplicará modelos preditivos
     para detecção de anomalias.
 </div>
 """, unsafe_allow_html=True)
+

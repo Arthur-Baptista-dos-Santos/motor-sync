@@ -1,5 +1,5 @@
-"""
-Page 2 — Cadastro / Edição
+﻿"""
+Page 2 | Cadastro / Edição
 Technical registration form for industrial equipment.
 """
 
@@ -14,7 +14,7 @@ from backend.services import EquipmentService
 from backend.models import INSULATION_CLASSES, PROTECTION_CLASSES, MANUFACTURERS
 
 st.set_page_config(
-    page_title="MotorSync — Cadastro",
+    page_title="MotorSync | Cadastro",
     page_icon="📝",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -27,7 +27,7 @@ edit_id = st.session_state.get("edit_equipment_id", None)
 is_edit = edit_id is not None
 existing = EquipmentService.get(edit_id) if is_edit else None
 
-mode_title = f"Editar — {existing.tag}" if (is_edit and existing) else "Novo Cadastro"
+mode_title = f"Editar | {existing.tag}" if (is_edit and existing) else "Novo Cadastro"
 mode_subtitle = "Atualize os dados técnicos do equipamento" if is_edit else "Preencha os dados técnicos do equipamento"
 
 # ── Header ───────────────────────────────────────────────────────────────────
@@ -62,7 +62,7 @@ def pf_idx(options: list, field: str, default_idx: int = 0):
 # ── Form ──────────────────────────────────────────────────────────────────────
 with st.form("equipment_form", clear_on_submit=False):
 
-    # Section 1 — Identification
+    # Section 1 | Identification
     section_header("Identificação do Ativo", "Informações de identificação e localização")
 
     col1, col2 = st.columns([1, 2])
@@ -77,7 +77,7 @@ with st.form("equipment_form", clear_on_submit=False):
         installation_location = st.text_input(
             "Localização de Instalação *",
             value=pf("installation_location"),
-            placeholder="ex: Sala de Bombas — Bloco A, Linha de Produção 2",
+            placeholder="ex: Sala de Bombas | Bloco A, Linha de Produção 2",
         )
 
     col3, col4 = st.columns(2)
@@ -105,7 +105,7 @@ with st.form("equipment_form", clear_on_submit=False):
 
     st.markdown("<div style='margin:8px 0'></div>", unsafe_allow_html=True)
 
-    # Section 2 — Equipment data
+    # Section 2 | Equipment data
     section_header("Dados do Equipamento", "Placa de identificação e especificações de fábrica")
 
     col5, col6 = st.columns(2)
@@ -125,8 +125,8 @@ with st.form("equipment_form", clear_on_submit=False):
 
     st.markdown("<div style='margin:8px 0'></div>", unsafe_allow_html=True)
 
-    # Section 3 — Electrical parameters
-    section_header("Parâmetros Elétricos", "Dados de placa — tensão, corrente e frequência nominais")
+    # Section 3 | Electrical parameters
+    section_header("Parâmetros Elétricos", "Dados de placa | tensão, corrente e frequência nominais")
 
     col7, col8, col9 = st.columns(3)
     with col7:
@@ -167,7 +167,7 @@ with st.form("equipment_form", clear_on_submit=False):
 
     st.markdown("<div style='margin:8px 0'></div>", unsafe_allow_html=True)
 
-    # Section 4 — Mechanical / protection
+    # Section 4 | Mechanical / protection
     section_header("Grau de Proteção e Isolamento", "Conformidade com normas ABNT / IEC")
 
     col12, col13, col14 = st.columns(3)
@@ -192,7 +192,7 @@ with st.form("equipment_form", clear_on_submit=False):
 
     st.markdown("<div style='margin:8px 0'></div>", unsafe_allow_html=True)
 
-    # Section 5 — Notes
+    # Section 5 | Notes
     section_header("Observações", "Informações adicionais, histórico ou particularidades")
     notes = st.text_area(
         "Notas Técnicas",
@@ -283,3 +283,4 @@ with st.expander("ℹ️  Guia de Preenchimento", expanded=False):
     | **IP** | Índice de proteção contra sólidos e líquidos | `IP55` (poeira + jato d'água) |
     | **Isolamento** | Classe de isolamento (define limite de temperatura) | Classe `F` = 155°C |
     """)
+

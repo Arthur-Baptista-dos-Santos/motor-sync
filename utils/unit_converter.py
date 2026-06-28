@@ -1,7 +1,7 @@
-"""
+﻿"""
 Unit conversion utilities.
 Converts raw ADC/sensor values to meaningful engineering units.
-Fully decoupled from UI — pure functions.
+Fully decoupled from UI | pure functions.
 """
 
 from dataclasses import dataclass
@@ -14,20 +14,20 @@ from typing import Optional
 ADC_RESOLUTION = 4095          # 12-bit ADC
 ADC_VREF = 3.3                 # Reference voltage (V)
 
-# Voltage sensor: ZMPT101B — maps 0–4095 to 0–500V AC (after rectification)
+# Voltage sensor: ZMPT101B | maps 0–4095 to 0–500V AC (after rectification)
 VOLTAGE_SENSOR_MAX_V = 500.0
 
-# Current sensor: ACS712-30A — maps 0–4095 → 0–30A
+# Current sensor: ACS712-30A | maps 0–4095 → 0–30A
 CURRENT_SENSOR_MAX_A = 30.0
 
-# Temperature sensor: NTC thermistor — maps 0–4095 → -20°C to 150°C
+# Temperature sensor: NTC thermistor | maps 0–4095 → -20°C to 150°C
 TEMP_SENSOR_MIN_C = -20.0
 TEMP_SENSOR_MAX_C = 150.0
 
-# Vibration sensor: ADXL345 — maps 0–4095 → 0–16g
+# Vibration sensor: ADXL345 | maps 0–4095 → 0–16g
 VIBRATION_SENSOR_MAX_G = 16.0
 
-# RPM sensor: Hall-effect pulse counter — raw pulses/sec × 60 = RPM
+# RPM sensor: Hall-effect pulse counter | raw pulses/sec × 60 = RPM
 RPM_PULSES_PER_REV = 1         # 1 magnet per revolution
 
 
@@ -149,3 +149,4 @@ def convert_reading(raw_reading: dict, nominal: Optional[dict] = None) -> Conver
         vibration_status=_vibration_status(g),
         rpm_status=_threshold_status(r, n.get("rpm", r)),
     )
+

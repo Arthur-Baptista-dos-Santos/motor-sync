@@ -1,5 +1,5 @@
-"""
-Service layer — business logic and orchestration.
+﻿"""
+Service layer | business logic and orchestration.
 This is the contract between UI and storage/model layers.
 """
 
@@ -98,3 +98,4 @@ class SensorService:
     @staticmethod
     def add_reading(reading: SensorReading) -> SensorReading:
         return storage.save_reading(reading)
+

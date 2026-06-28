@@ -1,8 +1,8 @@
-"""
-MotorSync — Motor Monitoring System
+﻿"""
+MotorSync | Motor Monitoring System
 Sprint 1: Asset Fundamentals & Registration Interface
 
-Entry point — Dashboard / Home screen.
+Entry point | Dashboard / Home screen.
 """
 
 import streamlit as st
@@ -18,7 +18,7 @@ from backend.models import EQUIPMENT_STATUS
 
 # ── Page config ──────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="MotorSync — Painel Principal",
+    page_title="MotorSync | Painel Principal",
     page_icon="⚡",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -185,3 +185,4 @@ if equipments:
         """, unsafe_allow_html=True)
 else:
     st.info("Nenhum equipamento cadastrado. Use o menu **Cadastro** para adicionar o primeiro ativo.", icon="⚡")
+

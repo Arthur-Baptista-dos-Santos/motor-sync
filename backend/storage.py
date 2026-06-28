@@ -1,5 +1,5 @@
-"""
-Storage layer — JSON file-based persistence.
+﻿"""
+Storage layer | JSON file-based persistence.
 Fully decoupled: swap for SQLite/Postgres without touching UI code.
 """
 
@@ -26,7 +26,7 @@ def _ensure_files():
 
 def _read_json_safe(filepath: Path) -> list:
     """Read a JSON file safely, handling encoding issues and corruption."""
-    raw = filepath.read_bytes()  # read raw bytes — never fails on encoding
+    raw = filepath.read_bytes()  # read raw bytes | never fails on encoding
     # Try UTF-8 first, then latin-1 as fallback (latin-1 decodes any byte sequence)
     for enc in ("utf-8", "utf-8-sig", "latin-1"):
         try:
@@ -38,7 +38,7 @@ def _read_json_safe(filepath: Path) -> list:
             return data
         except (UnicodeDecodeError, json.JSONDecodeError):
             continue
-    # File is unrecoverable — back it up and start fresh
+    # File is unrecoverable | back it up and start fresh
     backup = filepath.with_suffix(f".bak_{datetime.now().strftime('%Y%m%d%H%M%S')}.json")
     filepath.rename(backup)
     filepath.write_text(json.dumps([], indent=2), encoding="utf-8")

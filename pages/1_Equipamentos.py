@@ -1,5 +1,5 @@
-"""
-Page 1 — Equipamentos
+﻿"""
+Page 1 | Equipamentos
 List, search and filter registered equipment. Click to open technical sheet.
 """
 
@@ -15,7 +15,7 @@ from utils.ui_helpers import inject_css, render_sidebar, badge_html, section_hea
 from backend.services import EquipmentService
 
 st.set_page_config(
-    page_title="MotorSync — Equipamentos",
+    page_title="MotorSync | Equipamentos",
     page_icon="⚙️",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -90,7 +90,7 @@ if filtered:
         try:
             upd = datetime.fromisoformat(eq.updated_at).strftime("%d/%m/%Y")
         except Exception:
-            upd = "—"
+            upd = "|"
         status_label = STATUS_CONFIG.get(eq.status, {}).get("label", eq.status)
         rows.append({
             "TAG": eq.tag,
@@ -108,7 +108,7 @@ if filtered:
     df = pd.DataFrame(rows)
     display_df = df.drop(columns=["_id"])
 
-    # Style the dataframe — usa .map() (pandas ≥ 2.0); fallback para .applymap() em versões antigas
+    # Style the dataframe | usa .map() (pandas ≥ 2.0); fallback para .applymap() em versões antigas
     def color_status(val):
         colors = {
             "Ativo": "color: #22c55e",
@@ -135,7 +135,7 @@ if filtered:
     st.markdown("<div style='margin-top:24px;'></div>", unsafe_allow_html=True)
     section_header("Ficha Técnica", "Selecione um equipamento para ver os detalhes completos")
 
-    tag_options = {f"{e.tag} — {e.manufacturer} {e.model}": e.id for e in filtered}
+    tag_options = {f"{e.tag} | {e.manufacturer} {e.model}": e.id for e in filtered}
     selected_label = st.selectbox("Equipamento", list(tag_options.keys()),
                                    label_visibility="collapsed")
 
@@ -149,7 +149,13 @@ if filtered:
                 created = datetime.fromisoformat(eq.created_at).strftime("%d/%m/%Y %H:%M")
                 updated = datetime.fromisoformat(eq.updated_at).strftime("%d/%m/%Y %H:%M")
             except Exception:
-                created = updated = "—"
+                created = updated = "N/A"
+
+            notes_html = (
+                f"<div style='background:#161b22;border-radius:6px;padding:12px 14px;margin-bottom:16px;'>"
+                f"<div style='font-size:11px;text-transform:uppercase;color:#484f58;font-weight:600;margin-bottom:4px;'>Observacoes</div>"
+                f"<div style='font-size:13px;color:#8b949e;'>{eq.notes}</div></div>"
+            ) if eq.notes else ""
 
             st.markdown(f"""
             <div style="background:#1c2128; border:1px solid #f97316; border-radius:12px;
@@ -230,10 +236,7 @@ if filtered:
                     </div>
                 </div>
 
-                {"<div style='background:#161b22; border-radius:6px; padding:12px 14px; margin-bottom:16px;'>" +
-                 "<div style='font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#484f58;font-weight:600;margin-bottom:4px;'>Observações</div>" +
-                 f"<div style='font-size:13px;color:#8b949e;'>{eq.notes}</div></div>"
-                 if eq.notes else ""}
+                {notes_html}
 
                 <!-- Footer -->
                 <div style="display:flex; gap:24px; font-size:11px; color:#484f58;">

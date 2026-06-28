@@ -1,5 +1,5 @@
-"""
-Shared UI helpers — sidebar, theme injection, reusable components.
+﻿"""
+Shared UI helpers | sidebar, theme injection, reusable components.
 Keeps page files clean and consistent.
 """
 
@@ -52,7 +52,7 @@ def render_sidebar():
         <hr style="border-color:#30363d; margin: 0 0 16px;">
         """, unsafe_allow_html=True)
 
-        st.markdown("**NAVEGAÇÃO**", help="Sprint 1 — Fundamentos do Ativo")
+        st.markdown("**NAVEGAÇÃO**", help="Sprint 1 | Fundamentos do Ativo")
         st.page_link("app.py",                label="🏠  Painel Principal")
         st.page_link("pages/1_Equipamentos.py", label="⚙️  Equipamentos")
         st.page_link("pages/2_Cadastro.py",     label="📝  Cadastro / Edição")
@@ -70,7 +70,7 @@ def render_sidebar():
         """, unsafe_allow_html=True)
 
         st.markdown("<hr style='border-color:#30363d; margin:16px 0;'>", unsafe_allow_html=True)
-        st.caption("v1.0.0 — Sprint 1")
+        st.caption("v1.0.0 | Sprint 1")
 
 
 def badge_html(status: str) -> str:
@@ -102,3 +102,4 @@ def render_sensor_box(label: str, value: str, unit: str, status: str = "ok"):
         <div class="unit">{unit}</div>
     </div>
     """, unsafe_allow_html=True)
+
